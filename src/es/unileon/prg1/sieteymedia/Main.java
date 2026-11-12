@@ -1,7 +1,7 @@
 package es.unileon.prg1.sieteymedia;
 public class Main {
     public static void main(String[] args) {
-        // 1. Probamos la clase Card
+       
         Card asOros = new Card(); // 1 de OROS
         Card sotaOros = new Card(10, 0); // 10 de OROS
 
@@ -9,12 +9,12 @@ public class Main {
         System.out.println("Siguiente al As de Oros: " + asOros.next());
         System.out.println("Posición de la Sota de Oros (con while): " + sotaOros.getPositionWhile());
 
-        // 2. Probamos la mano del jugador (SieteymediaCards)
+       
         SieteymediaCards mano = new SieteymediaCards();
         mano.add(asOros);
         mano.add(sotaOros);
 
-        System.out.println("\n--- Mano del jugador ---");
+        System.out.println("\n Mano del jugador");
         System.out.print(mano.toString());
         System.out.println("Puntos totales: " + mano.getPoints());
     }
