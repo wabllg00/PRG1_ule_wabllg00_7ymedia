@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SieteYMedia" basedir="." default="todo">
+
+    <property name="src" value="src"/>
+    <property name="classes" value="classes"/>
+    <property name="doc" value="doc"/>
+    <property name="dist" value="dist"/>
+    <property name="titulo" value="El juego de las Siete y Media - PRG1"/>
+
+    <target name="limpiar">
+        <delete dir="${classes}"/>
+        <delete dir="${doc}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+    <target name="compilar" depends="limpiar">
+        <mkdir dir="${classes}"/>
+        <javac srcdir="${src}" destdir="${classes}" includeantruntime="false"/>
+    </target>
+
+    <target name="documentar">
+        <mkdir dir="${doc}"/>
+        <javadoc sourcepath="${src}" destdir="${doc}" author="true" version="true" access="private" windowtitle="${titulo}" doctitle="${titulo}"/>
+    </target>
+
+    <target name="distribuir" depends="compilar">
+        <mkdir dir="${dist}"/>
+        <jar jarfile="${dist}/sieteymedia.jar" basedir="${classes}" compress="true"/>
+    </target>
+
+    <target name="probar" depends="compilar">
+        <java classname="es.unileon.prg1.sieteymedia.Main" fork="true">
+            <classpath>
+                <pathelement path="${classes}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="todo" depends="compilar, documentar, distribuir, probar"/>
+
+</project>
